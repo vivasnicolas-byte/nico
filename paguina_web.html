@@ -1,0 +1,354 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Galeria de cuadrigula</title>
+
+<style>
+
+@import url('https://fonts.googleapis.com/css2?family=Bebas+Neue&family=DM+Sans:wght@300;400;500&display=swap');
+
+:root {
+    --bg: #0e0e0e;
+    --surface: #1a1a1a;
+    --accent: #e8e8e8;
+    --text: #f0f0f0;
+    --muted: #666;
+    --gap: 12px;
+    --radius: 4px;
+}
+
+*{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    background: var(--bg);
+    color: var(--text);
+    font-family: "DM Sans", sans-serif;
+    min-height: 100vh;
+    padding: 40px 24px;
+}
+
+header{
+    max-width: 960px;
+    margin: 0 auto 40px;
+    display: flex;
+    align-items: flex-end;
+    justify-content: space-between;
+    border-bottom: 1px solid #2a2a2a;
+    padding-bottom: 20px;
+}
+
+header h1 {
+    font-family: 'Bebas Neue', sans-serif;
+    font-size: clamp(2.5rem, 6vw,5rem);
+    letter-spacing: 0.04em;
+    line-height: 1;
+    color: var(--text);
+}
+
+header h1 span{
+    color: var(--accent);
+}
+
+header p {
+    font-size: 0.8rem;
+    color: var(--muted);
+    text-transform: uppercase;
+    letter-spacing: 0.1em;
+    text-align: right;
+}
+
+.grid {
+    display: grid;
+    max-width: 960px;
+    margin: 0 auto;
+    gap: var(--gap);
+    grid-template-columns: repeat(3, 1fr);
+}
+
+.cell--wide {
+    grid-column: span 2;
+}
+
+.cell--tall {
+    grid-row: span 2;
+}
+
+.cell--big {
+    grid-column: span 2;
+    grid-row: span 2;
+}
+
+.cell {
+    position: relative;
+    overflow: hidden;
+    border-radius: var(--radius);
+    background-color: var(--surface);
+    cursor: pointer;
+    aspect-ratio: 1 / 1;
+}
+
+.cell--tall {
+    aspect-ratio: unset;
+}
+
+.cell--big {
+    aspect-ratio: unset;
+    min-height: 320px;
+}
+
+.cell img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    display: block;
+    transition:
+        transform 0.5s cubic-bezier(0.25, 0.46, 0.45, 0.94),
+        filter 0.4s ease;
+}
+
+.cell:hover img {
+    transform: scale(1.06);
+    filter: grayscale(0%);
+}
+
+.cell-overlay {
+    position: absolute;
+    inset: 0;
+    background: linear-gradient(to top, rgba(0,0,0,0.75) 0%, transparent 55%);
+    opacity: 0;
+    transition: opacity 0.35s ease;
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-end;
+    padding: 16px;
+}
+
+.cell:hover .cell-overlay {
+    opacity: 1;
+}
+
+.cell-overlay h3 {
+    font-family: 'Bebas Neue', sans-serif;
+    font-size: 1.3rem;
+    letter-spacing: 0.05em;
+    color: #fff;
+}
+
+.cell-overlay p {
+    font-size: 0.72rem;
+    color: rgba(255,255,255,0.65);
+    margin-top: 2px;
+}
+
+.cell-index {
+    position: absolute;
+    top: 10px;
+    left: 12px;
+    font-family: 'Bebas Neue', sans-serif;
+    font-size: 0.85rem;
+    color: var(--accent);
+    letter-spacing: 0.08em;
+    opacity: 0;
+    transition: opacity 0.3s ease;
+    pointer-events: none;
+}
+
+.cell:hover .cell-index {
+    opacity: 1;
+}
+
+.tag {
+    display: inline-block;
+    background: var(--accent);
+    color: #000;
+    font-family: 'Bebas Neue', sans-serif;
+    font-size: 0.75rem;
+    letter-spacing: 0.12em;
+    padding: 3px 8px;
+    border-radius: 2px;
+    margin-bottom: 6px;
+}
+
+@media (max-width: 640px) {
+
+    .grid {
+        grid-template-columns: repeat(2, 1fr);
+    }
+
+    .cell--wide {
+        grid-column: span 2;
+    }
+
+    .cell--big {
+        grid-column: span 2;
+    }
+}
+
+@media (max-width: 400px) {
+
+    .grid {
+        grid-template-columns: 1fr;
+    }
+
+    .cell--wide,
+    .cell--big,
+    .cell--tall {
+        grid-column: span 1;
+        grid-row: span 1;
+    }
+}
+
+.cell {
+    animation: fadeUp 0.5s ease both;
+}
+
+.cell:nth-child(1) { animation-delay: 0.05s; }
+.cell:nth-child(2) { animation-delay: 0.10s; }
+.cell:nth-child(3) { animation-delay: 0.15s; }
+.cell:nth-child(4) { animation-delay: 0.20s; }
+.cell:nth-child(5) { animation-delay: 0.25s; }
+.cell:nth-child(6) { animation-delay: 0.30s; }
+.cell:nth-child(7) { animation-delay: 0.35s; }
+.cell:nth-child(8) { animation-delay: 0.40s; }
+.cell:nth-child(9) { animation-delay: 0.45s; }
+
+@keyframes fadeUp {
+    from {
+        opacity: 0;
+        transform: translateY(18px);
+    }
+
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+</style>
+</head>
+
+<body>
+
+<header>
+    <h1>GALERÍA <span>GRID</span></h1>
+    <p>Práctica HTML<br>cuadrícula CSS</p>
+</header>
+
+<section class="grid">
+
+    <article class="cell cell--big">
+
+        <span class="cell-index">01</span>
+
+        <img
+            src="https://picsum.photos/seed/forest/800/800"
+            alt="Bosque verde"
+            loading="lazy"
+        >
+
+        <div class="cell-overlay">
+            <span class="tag">DESTACADA</span>
+            <h3>Bosque</h3>
+            <p>Sustituye src con tu imagen</p>
+        </div>
+
+    </article>
+
+    <article class="cell">
+        <span class="cell-index">02</span>
+        <img src="https://picsum.photos/seed/mountain/400/400" alt="Montaña" loading="lazy">
+
+        <div class="cell-overlay">
+            <h3>Montaña</h3>
+            <p>img src="foto.jpg"</p>
+        </div>
+    </article>
+
+    <article class="cell">
+        <span class="cell-index">03</span>
+        <img src="https://picsum.photos/seed/ocean/400/400" alt="Océano" loading="lazy">
+
+        <div class="cell-overlay">
+            <h3>Océano</h3>
+            <p>img src="foto.jpg"</p>
+        </div>
+    </article>
+
+    <article class="cell cell--wide">
+
+        <span class="cell-index">04</span>
+        <img src="https://picsum.photos/seed/city/800/400" alt="Ciudad" loading="lazy">
+
+        <div class="cell-overlay">
+            <span class="tag">ANCHA</span>
+            <h3>Ciudad</h3>
+            <p>class="cell cell--wide" → ocupa 2 columnas</p>
+        </div>
+
+    </article>
+
+    <article class="cell">
+        <span class="cell-index">05</span>
+        <img src="https://picsum.photos/seed/desert/400/400" alt="Desierto" loading="lazy">
+
+        <div class="cell-overlay">
+            <h3>Desierto</h3>
+            <p>img src="foto.jpg"</p>
+        </div>
+    </article>
+
+    <article class="cell">
+        <span class="cell-index">06</span>
+        <img src="https://picsum.photos/seed/river/400/400" alt="Río" loading="lazy">
+
+        <div class="cell-overlay">
+            <h3>Río</h3>
+            <p>img src="foto.jpg"</p>
+        </div>
+    </article>
+
+    <article class="cell">
+        <span class="cell-index">07</span>
+        <img src="https://picsum.photos/seed/aurora/400/400" alt="Aurora" loading="lazy">
+
+        <div class="cell-overlay">
+            <h3>Aurora</h3>
+            <p>img src="foto.jpg"</p>
+        </div>
+    </article>
+
+    <article class="cell cell--tall">
+
+        <span class="cell-index">08</span>
+        <img src="https://picsum.photos/seed/waterfall/400/800" alt="Cascada" loading="lazy">
+
+        <div class="cell-overlay">
+            <span class="tag">ALTA</span>
+            <h3>Cascada</h3>
+            <p>class="cell cell--tall" → ocupa 2 filas</p>
+        </div>
+
+    </article>
+
+    <article class="cell">
+
+        <span class="cell-index">09</span>
+        <img src="https://picsum.photos/seed/volcano/400/400" alt="Volcán" loading="lazy">
+
+        <div class="cell-overlay">
+            <h3>Volcán</h3>
+            <p>img src="foto.jpg"</p>
+        </div>
+
+    </article>
+
+</section>
+
+</body>
+</html>

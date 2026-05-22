@@ -1,0 +1,530 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Portafolio | Nicolas Vivas Guerrero</title>
+
+  <style>
+
+    *{
+      margin:0;
+      padding:0;
+      box-sizing:border-box;
+      font-family:Arial, Helvetica, sans-serif;
+    }
+
+    html{
+      scroll-behavior:smooth;
+    }
+
+    body{
+      background:#0f172a;
+      color:white;
+      line-height:1.6;
+    }
+
+    nav{
+      position:fixed;
+      top:0;
+      width:100%;
+      background:#020617;
+      padding:18px;
+      text-align:center;
+      z-index:1000;
+      box-shadow:0 2px 10px rgba(0,0,0,0.5);
+    }
+
+    nav a{
+      color:white;
+      text-decoration:none;
+      margin:0 15px;
+      font-weight:bold;
+      transition:0.3s;
+    }
+
+    nav a:hover{
+      color:#38bdf8;
+    }
+
+    header{
+      min-height:100vh;
+      display:flex;
+      justify-content:center;
+      align-items:center;
+      text-align:center;
+      padding:40px;
+      background:linear-gradient(135deg,#0f172a,#1e293b,#334155);
+    }
+
+    .hero{
+      max-width:900px;
+      animation:fadeUp 1s ease;
+    }
+
+    .logo{
+      width:180px;
+      background:white;
+      padding:15px;
+      border-radius:20px;
+      margin-bottom:30px;
+    }
+
+    .profile-photo{
+      width:250px;
+      height:250px;
+      object-fit:cover;
+      border-radius:50%;
+      border:6px solid #38bdf8;
+      margin:30px auto;
+      display:block;
+      box-shadow:0 0 25px rgba(56,189,248,0.5);
+    }
+
+    .hero h1{
+      font-size:4rem;
+      color:#38bdf8;
+      margin-bottom:10px;
+    }
+
+    .hero h2{
+      color:#cbd5e1;
+      margin-bottom:20px;
+      font-size:2rem;
+    }
+
+    .hero p{
+      color:#e2e8f0;
+      font-size:1.1rem;
+    }
+
+    section{
+      padding:100px 10%;
+      animation:fadeUp 1s ease;
+    }
+
+    .section-title{
+      text-align:center;
+      color:#38bdf8;
+      font-size:2.8rem;
+      margin-bottom:50px;
+    }
+
+    .about,
+    .goals{
+      background:#111827;
+      padding:40px;
+      border-radius:25px;
+      box-shadow:0 0 20px rgba(0,0,0,0.4);
+    }
+
+    .skills{
+      display:grid;
+      grid-template-columns:repeat(auto-fit,minmax(250px,1fr));
+      gap:25px;
+    }
+
+    .skill-card{
+      background:#1e293b;
+      padding:30px;
+      border-radius:20px;
+      text-align:center;
+      transition:0.4s;
+      border:1px solid rgba(255,255,255,0.1);
+    }
+
+    .skill-card:hover{
+      transform:translateY(-8px);
+      background:#334155;
+    }
+
+    .skill-card h3{
+      color:#38bdf8;
+      margin-bottom:15px;
+    }
+
+    .skill-card a{
+      display:inline-block;
+      margin-top:15px;
+      padding:10px 20px;
+      background:#38bdf8;
+      color:#0f172a;
+      text-decoration:none;
+      border-radius:12px;
+      font-weight:bold;
+    }
+
+    .projects{
+      display:grid;
+      grid-template-columns:repeat(auto-fit,minmax(320px,1fr));
+      gap:30px;
+    }
+
+    .project-card{
+      background:#1e293b;
+      padding:30px;
+      border-radius:25px;
+      transition:0.4s;
+      border:1px solid rgba(255,255,255,0.1);
+      box-shadow:0 0 20px rgba(0,0,0,0.3);
+    }
+
+    .project-card:hover{
+      transform:translateY(-10px) scale(1.02);
+    }
+
+    .project-card h3{
+      color:#38bdf8;
+      margin-bottom:15px;
+    }
+
+    .project-card p{
+      color:#cbd5e1;
+      margin-bottom:20px;
+    }
+
+    .project-card a{
+      display:inline-block;
+      padding:12px 20px;
+      background:#38bdf8;
+      color:#0f172a;
+      text-decoration:none;
+      border-radius:12px;
+      font-weight:bold;
+    }
+
+    .project-card a:hover{
+      background:white;
+    }
+
+    .contact{
+      text-align:center;
+    }
+
+    .contact a{
+      display:block;
+      color:#38bdf8;
+      margin-top:15px;
+      text-decoration:none;
+      font-size:1.1rem;
+    }
+
+    footer{
+      background:#020617;
+      text-align:center;
+      padding:25px;
+      color:#94a3b8;
+    }
+
+    @keyframes fadeUp{
+
+      from{
+        opacity:0;
+        transform:translateY(30px);
+      }
+
+      to{
+        opacity:1;
+        transform:translateY(0);
+      }
+
+    }
+
+    @media(max-width:768px){
+
+      .hero h1{
+        font-size:2.7rem;
+      }
+
+      .hero h2{
+        font-size:1.5rem;
+      }
+
+      .profile-photo{
+        width:200px;
+        height:200px;
+      }
+
+    }
+
+  </style>
+
+</head>
+
+<body>
+
+  <nav>
+    <a href="#inicio">Inicio</a>
+    <a href="#sobre-mi">Sobre mí</a>
+    <a href="#habilidades">Habilidades</a>
+    <a href="#proyectos">Proyectos</a>
+    <a href="#objetivos">Objetivos</a>
+    <a href="#contacto">Contacto</a>
+  </nav>
+
+  <!-- INICIO -->
+  <header id="inicio">
+
+    <div class="hero">
+
+      <img
+        class="logo"
+        src="Eniie.png"
+        alt="Logo ENII"
+      >
+
+      <img
+        class="profile-photo"
+        src="foto_n.jpeg"
+        alt="Foto Nicolas"
+      >
+
+      <h1>Nicolas Vivas Guerrero</h1>
+
+      <h2>Estudiante de Desarrollo de Software</h2>
+
+      <p>
+        Portafolio digital desarrollado para evidenciar mis habilidades
+        en programación, lógica computacional y desarrollo web utilizando
+        tecnologías como Python, HTML y GitHub.
+      </p>
+
+    </div>
+
+  </header>
+
+  <!-- SOBRE MI -->
+  <section id="sobre-mi">
+
+    <h2 class="section-title">Sobre mí</h2>
+
+    <div class="about">
+
+      <p>
+        Mi nombre es Nicolas Vivas Guerrero, estudiante de diseño de software.
+        Las tecnologías que he aplicado durante mi trayectoria como estudiante
+        han sido Python y HTML.
+      </p>
+
+      <br>
+
+      <p>
+        He desarrollado proyectos relacionados con matrices,
+        lógica computacional, páginas web y organización de datos.
+      </p>
+
+      <br>
+
+      <p>
+        Mi interés principal es seguir mejorando mis habilidades
+        de programación y diseño web.
+      </p>
+
+    </div>
+
+  </section>
+
+  <!-- HABILIDADES -->
+  <section id="habilidades">
+
+    <h2 class="section-title">Habilidades</h2>
+
+    <div class="skills">
+
+      <div class="skill-card">
+
+        <h3>Python</h3>
+
+        <p>
+          Desarrollo de ejercicios utilizando matrices,
+          variables y operadores lógicos.
+        </p>
+
+        <a href="https://www.python.org/doc/" target="_blank">
+          Ver documentación
+        </a>
+
+      </div>
+
+      <div class="skill-card">
+
+        <h3>HTML</h3>
+
+        <p>
+          Creación de páginas web, enlaces,
+          imágenes y estructuras web.
+        </p>
+
+        <a href="https://developer.mozilla.org/es/docs/Web/HTML" target="_blank">
+          Ver documentación
+        </a>
+
+      </div>
+
+      <div class="skill-card">
+
+        <h3>GitHub</h3>
+
+        <p>
+          Publicación y almacenamiento de proyectos.
+        </p>
+
+        <a href="https://docs.github.com/es" target="_blank">
+          Ver documentación
+        </a>
+
+      </div>
+
+    </div>
+
+  </section>
+
+  <!-- PROYECTOS -->
+  <section id="proyectos">
+
+    <h2 class="section-title">Proyectos</h2>
+
+    <div class="projects">
+
+      <div class="project-card">
+
+        <h3>Matrices - Tablero de Ajedrez</h3>
+
+        <p>
+          Proyecto realizado en Python utilizando matrices.
+        </p>
+
+        <a href="ajedrez.html">
+          Ver proyecto
+        </a>
+
+      </div>
+
+      <div class="project-card">
+
+        <h3>hola_mundo.py</h3>
+
+        <p>
+          Proyecto enfocado en variables y operadores matemáticos.
+        </p>
+
+        <a href="hola_mundo.html">
+          Ver proyecto
+        </a>
+
+      </div>
+
+      <div class="project-card">
+
+        <h3>Ejercicios Booleanos</h3>
+
+        <p>
+          Validación de datos y operadores lógicos.
+        </p>
+
+        <a href="booleanos.html">
+          Ver proyecto
+        </a>
+
+      </div>
+
+      <div class="project-card">
+
+        <h3>Curso HTML</h3>
+
+        <p>
+          Página web utilizando links e imágenes.
+        </p>
+
+        <a href="curso_html.html">
+          Ver proyecto
+        </a>
+
+      </div>
+
+      <div class="project-card">
+
+        <h3>Diseño Web Avanzado</h3>
+
+        <p>
+          Diseño visual utilizando HTML y CSS.
+        </p>
+
+        <a href="diseno_web.html">
+          Ver proyecto
+        </a>
+
+      </div>
+
+    </div>
+
+  </section>
+
+  <!-- OBJETIVOS -->
+  <section id="objetivos">
+
+    <h2 class="section-title">Objetivos</h2>
+
+    <div class="goals">
+
+      <p>
+        Mi objetivo a corto y largo plazo es mejorar mis habilidades
+        de programación y aprender nuevos lenguajes y tecnologías.
+      </p>
+
+      <br>
+
+      <p>
+        También busco implementar la programación en mi vida cotidiana
+        y en mi futuro profesional.
+      </p>
+
+      <br>
+
+      <p>
+        Mi experiencia actual se basa principalmente en Python y HTML,
+        mientras continúo creciendo como estudiante de desarrollo de software.
+      </p>
+
+    </div>
+
+  </section>
+
+  <!-- CONTACTO -->
+  <section id="contacto">
+
+    <h2 class="section-title">Contacto</h2>
+
+    <div class="contact">
+
+      <p>Correo electrónico:</p>
+
+      <a href="mailto:Vivasnicolas16@gmail.com">
+        Vivasnicolas16@gmail.com
+      </a>
+
+      <br>
+
+      <p>GitHub:</p>
+
+      <a
+        href="https://github.com/vivasnicolas-byte/nico"
+        target="_blank"
+      >
+        github.com/vivasnicolas-byte/nico
+      </a>
+
+    </div>
+
+  </section>
+
+  <footer>
+
+    <p>
+      © 2026 Nicolas Vivas Guerrero | Portafolio de Desarrollo de Software
+    </p>
+
+  </footer>
+
+</body>
+</html>

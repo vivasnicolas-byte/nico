@@ -1,21 +1,27 @@
-morse = {
-    "*-": "A", "-***": "B", "-*-*": "C", "-**": "D",
-    "*": "E", "**-*": "F", "--*": "G", "****": "H",
-    "**": "I", "*---": "J", "-*-": "K", "*-**": "L",
-    "--": "M", "-*": "N", "---": "O", "*--*": "P",
-    "--*-": "Q", "*-*": "R", "***": "S", "-": "T",
-    "**-": "U", "***-": "V", "*--": "W", "-**-": "X",
-    "-*--": "Y", "--**": "Z"
-}
+def traducir_morse(codigo):
+    morse = {
+        '.-': 'A', '-...': 'B', '-.-.': 'C', '-..': 'D',
+        '.': 'E', '..-.': 'F', '--.': 'G', '....': 'H',
+        '..': 'I', '.---': 'J', '-.-': 'K', '.-..': 'L',
+        '--': 'M', '-.': 'N', '---': 'O', '.--.': 'P',
+        '--.-': 'Q', '.-.': 'R', '...': 'S', '-': 'T',
+        '..-': 'U', '...-': 'V', '.--': 'W', '-..-': 'X',
+        '-.--': 'Y', '--..': 'Z'
+    }
 
-codigo = input("Ingrese el código: ")
+    letras = codigo.split()
+    resultado = ''
 
-resultado = ""
+    for letra in letras:
+        if letra in morse:
+            resultado += morse[letra]
+        elif letra == '/':  # separador de palabras
+            resultado += ' '
+        else:
+            resultado += '?'
 
-for simbolo in codigo.split():
-    if simbolo in morse:
-        resultado += morse[simbolo]
-    else:
-        resultado += "?"
+    return resultado
 
-print(resultado)
+
+codigo = "-- . / --. ..- ... - .- / . .-.. / -.-. .... --- -.-. --- .-.. .- - . / -.-. --- -. / --.- ..- . ... ---"
+print(traducir_morse(codigo))
